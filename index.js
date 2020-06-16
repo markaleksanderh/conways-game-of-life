@@ -1,15 +1,8 @@
 const svgCanvas = document. createElementNS("http://www.w3.org/2000/svg", "svg")
 
-
-// SQUARES SHOULD ALWAYS BE TEN PIXELS WIDE/HIGH
-
-
-
-// Square height + width
 var square_dimensions = 10
 
-var matrix_size = 45
-// MATRIX HEIGHT + WIDTH
+var matrix_size = 50
 var canvas_width = square_dimensions * matrix_size
 var canvas_height = square_dimensions * matrix_size
 
@@ -47,9 +40,9 @@ drawMatrix = (matrix) => {
 
 createMatrix = (canvas_width, canvas_height) => {
     var matrix = []
-    for (var i = 0; i < canvas_height; i = i + square_dimensions) {
+    for (var x = 0; x < canvas_height; x = x + square_dimensions) {
         var inner = []
-        for (var j = 0; j < canvas_width; j = j + square_dimensions) {
+        for (var y = 0; y < canvas_width; y = y + square_dimensions) {
             inner.push(0)
         }
         matrix.push(inner)
@@ -59,10 +52,8 @@ createMatrix = (canvas_width, canvas_height) => {
 
 var initial_matrix = createMatrix(canvas_width, canvas_height)
 
-
 var getRandomInt = (matrix_size) => {
     return Math.floor(Math.random() * Math.floor(matrix_size))
-
 }
 
 seedMatrix = (initial_matrix) => {
@@ -70,8 +61,6 @@ seedMatrix = (initial_matrix) => {
         initial_matrix[getRandomInt(matrix_size)][getRandomInt(matrix_size)] = 1
     }
 }
-
-
 
 seedMatrix(initial_matrix)
 drawMatrix(initial_matrix)
@@ -87,8 +76,6 @@ processMatrix = (input_matrix) => {
             var x_plus = (x + 1) % input_matrix[x].length
             var y_plus = (y + 1) % input_matrix[x].length
 
-            neighbor_count = 0
-
             var above_left = input_matrix[x_minus][y_minus]
             var above = input_matrix[x_minus][y]
             var above_right = input_matrix[x_minus][y_plus]
@@ -98,7 +85,7 @@ processMatrix = (input_matrix) => {
             var below = input_matrix[x_plus][y]
             var below_right = input_matrix[x_plus][y_plus]
 
-            neighbor_count = above_left + above + above_right + left + right + below_left + below + below_right
+            var neighbor_count = above_left + above + above_right + left + right + below_left + below + below_right
 
             /*
             Any live cell with fewer than two live neighbours dies, as if by underpopulation.
@@ -108,8 +95,6 @@ processMatrix = (input_matrix) => {
             */
 
             var isLive = input_matrix[x][y] == 1 ? true : false
-
-
 
             if (isLive) {
                 if (neighbor_count < 2) {
@@ -128,14 +113,11 @@ processMatrix = (input_matrix) => {
             else {
                 inner.push(0)
             }
-
-
         }
         output_matrix.push(inner)
     }
     return output_matrix
 }
-
 
 updateMatrix = (matrix) => {
     for (var x = 0; x < matrix.length; x++) {
@@ -160,16 +142,3 @@ for (let i = 1; i < 500; i++) {
 
     }, i * 500)
 }
-
-
-var colors = ["red", "green", "blue", "yellow"]
-
-var colorIndex = 0
-
-for (var i = 0; i < 10; i++) {
-    colorIndex = (colorIndex + 1) % colors.length
-    console.log(colorIndex)
-}
-
- 
-
