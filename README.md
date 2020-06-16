@@ -1,11 +1,3 @@
-`python3 -m http.server`
+# Conway's Game of Life
 
-
-### Program
-
-create 10*10 matrix
-
-seed matrix randomly
-
-
-
+JavaScript implementation of Conway's Game of Life.

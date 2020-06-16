@@ -3,12 +3,12 @@ const svgCanvas = document. createElementNS("http://www.w3.org/2000/svg", "svg")
 
 // SQUARES SHOULD ALWAYS BE TEN PIXELS WIDE/HIGH
 
-var colors = ["red", "green", "blue", "yellow"]
+
 
 // Square height + width
 var square_dimensions = 10
 
-var matrix_size = 20
+var matrix_size = 45
 // MATRIX HEIGHT + WIDTH
 var canvas_width = square_dimensions * matrix_size
 var canvas_height = square_dimensions * matrix_size
@@ -66,7 +66,7 @@ var getRandomInt = (matrix_size) => {
 }
 
 seedMatrix = (initial_matrix) => {
-    for (var i = 0; i < 300; i++) {
+    for (var i = 0; i < 200; i++) {
         initial_matrix[getRandomInt(matrix_size)][getRandomInt(matrix_size)] = 1
     }
 }
@@ -153,15 +153,23 @@ updateMatrix = (matrix) => {
 
 var processed_matrix = initial_matrix
 
-for (let i = 1; i < 200; i++) {
+for (let i = 1; i < 500; i++) {
     setTimeout(function timer() {
         processed_matrix = processMatrix(processed_matrix)
         updateMatrix(processed_matrix)
 
-    }, i * 200)
+    }, i * 500)
 }
 
 
+var colors = ["red", "green", "blue", "yellow"]
+
+var colorIndex = 0
+
+for (var i = 0; i < 10; i++) {
+    colorIndex = (colorIndex + 1) % colors.length
+    console.log(colorIndex)
+}
 
  
 
