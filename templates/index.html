@@ -1,0 +1,23 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Conway's Game of Life</title>
+    <link rel="shortcut icon"
+    href="{{ url_for('static', filename='img/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Conway's Game of Life</h1>
+        <p>JavaScript implementation of 2D cellular automata.</p>
+        <div id="svgCanvas"></div>
+        <p>Git repo available <a href="https://github.com/markaleksanderh/conways-game-of-life">here</a></p>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+</html>
+
